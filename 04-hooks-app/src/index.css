@@ -1,6 +1,7 @@
 
 @import "tailwindcss";
 
+/* Para resolver esta advertencia, puedes instalar la extensión Tailwind CSS IntelliSense, una vez instalado, necesitas asociar tu archivo CSS con Tailwind CSS. Para ello abre el archivo CSS donde importas Tailwind, presiona F1 y busca Change Language Mode, dentro de la barra de búsqueda, escribe tailwindcss y selecciónalo, a partir de ahí tu archivo CSS estará asociado con Tailwind CSS y las advertencias deberían desaparecer. */
 .bg-gradient {
   @apply bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 min-h-screen flex items-center justify-center p-4 text-white;
 }
