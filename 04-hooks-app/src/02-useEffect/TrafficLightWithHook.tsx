@@ -10,7 +10,7 @@ const colors = {
 // type TrafficLightColor = 'red' | 'yellow' | 'green';  // Si se agrega en el objeto "colors" otro valor y no acá queda desincronizado. 
 type TrafficLightColor = keyof typeof colors;   // Si se agrega un valor al objeto "colors" ya lo toma correctamente
 
-export const TrafficLightWithEffect = () => {
+export const TrafficLightWithHook = () => {
 
   const [light, setLight] = useState<TrafficLightColor>('red');
   const [countDown, setCountDown] = useState(5);
