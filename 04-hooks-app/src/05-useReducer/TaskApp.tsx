@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 import { Plus, Trash2, Check } from 'lucide-react';
 
@@ -6,39 +6,45 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
+import { getTasksInitialState, taskReducer } from './reducer/tasksReducer';
 
 export const TasksApp = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  // const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState('');
+  const [state, dispatch] = useReducer(taskReducer, getTasksInitialState())
+
+  useEffect(() => {
+    console.log({state});
+    localStorage.setItem('tasks-state', JSON.stringify(state));
+  }, [state])
+  
 
   const addTodo = () => {
-    console.log('Agregar tarea', inputValue);
+    if (inputValue.length === 0) return;
 
+    dispatch({ type: 'ADD_TODO', payload: inputValue });
+    setInputValue('');
   };
 
   const toggleTodo = (id: number) => {
-    console.log('Cambiar de true a false', id);
-
+    dispatch({ type: 'TOGGLE_TODO', payload: id });
   };
 
   const deleteTodo = (id: number) => {
-    console.log('Eliminar tarea', id);
-
+    dispatch({ type: 'DELETE_TODO', payload: id });
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    console.log('Presiono enter');
-
+    // console.log({ key: e.key });
+    if ( e.key === 'Enter' ) {
+      addTodo();
+    }
   };
 
-  const completedCount = todos.filter((todo) => todo.completed).length;
-  const totalCount = todos.length;
+  const { todos, completed: completedCount, length: totalCount } = state;
+
+  // const completedCount = todos.filter((todo) => todo.completed).length;
+  // const totalCount = todos.length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
