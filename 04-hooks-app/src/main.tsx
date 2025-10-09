@@ -24,3 +24,6 @@ createRoot(document.getElementById('root')!).render(
 
 // Instalación 
 // https://ui.shadcn.com/docs/installation/vite
+
+// https://zod.dev/
+// npm install zod
