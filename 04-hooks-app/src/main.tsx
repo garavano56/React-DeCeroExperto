@@ -11,6 +11,7 @@ import { ScrambleWords } from './05-useReducer/ScrambleWords'
 import { MemoHook } from './06-memos/MemoHook'
 import { MemoCounter } from './06-memos/MemoCounter'
 import { InstagromApp } from './07-useOptimistic/InstagromApp'
+import { ClientInformation } from './08-use-suspense/ClientInformation'
 // import { TrafficLight } from './01-useState/TrafficLight'
 // import { TrafficLightWithEffect } from './02-useEffect/TrafficLightWithEffect'
 // import { TrafficLightWithHook } from './02-useEffect/TrafficLightWithHook'
@@ -29,7 +30,8 @@ createRoot(document.getElementById('root')!).render(
     {/* <ScrambleWords /> */}
     {/* <MemoHook /> */}
     {/* <MemoCounter /> */}
-    <InstagromApp />
+    {/* <InstagromApp /> */}
+    <ClientInformation />
   </StrictMode>,
 )
 
@@ -41,3 +43,6 @@ createRoot(document.getElementById('root')!).render(
 
 // https://www.npmjs.com/package/canvas-confetti
 // npm install --save canvas-confetti
+
+// https://sonner.emilkowal.ski/  (Toast)
+// npm install sonner
