@@ -1,10 +1,19 @@
 
-import { use } from 'react';
-import { getUserAction } from './api/get-user.action';
+import { use, type Usable } from 'react';
+import { getUserAction, type User } from './api/get-user.action';
 
-export const ClientInformation = () => {
-  
-    const user = use( getUserAction(1) );
+// const userPromise = getUserAction(1);
+
+interface Props {
+    getUser: Usable<User>;      // Se ahce de esta forma si es que se quiere pasar parametro
+}
+
+export const ClientInformation = ({getUser}: Props) => {
+    
+    const user = use(getUser);
+
+    // Sin el "suspense" mientras carga esos segundos queda en blanco 
+    // const user = use( userPromise );   // getUserAction al async retorna una promesa. El use funcionaría acá como un await    
   
 //     useEffect(() => {
 //     getUserAction(id).then(console.log);

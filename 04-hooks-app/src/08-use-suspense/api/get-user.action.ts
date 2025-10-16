@@ -6,7 +6,7 @@ export interface User {
   role: string;
 }
 
-export const getUserAction = async (id: number) => {
+export const getUserAction = async(id: number) => {
   console.log('Función llamada');
   await new Promise((res) => setTimeout(res, 2000));
 
@@ -14,8 +14,8 @@ export const getUserAction = async (id: number) => {
 
   return {
     id: id,
-    name: 'Fernando Herrera',
-    location: 'Ottawa, Canadá',
+    name: 'Alejandro Garavano',
+    location: 'Rosario, Santa Fe',
     role: 'Instructor de Software',
   };
 };
