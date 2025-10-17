@@ -13,6 +13,7 @@ import { MemoCounter } from './06-memos/MemoCounter'
 import { InstagromApp } from './07-useOptimistic/InstagromApp'
 import { ClientInformation } from './08-use-suspense/ClientInformation'
 import { getUserAction } from './08-use-suspense/api/get-user.action'
+import { ProfessionalApp } from './09-useContext/ProfessionalApp'
 // import { TrafficLight } from './01-useState/TrafficLight'
 // import { TrafficLightWithEffect } from './02-useEffect/TrafficLightWithEffect'
 // import { TrafficLightWithHook } from './02-useEffect/TrafficLightWithHook'
@@ -33,13 +34,15 @@ createRoot(document.getElementById('root')!).render(
     {/* <MemoCounter /> */}
     {/* <InstagromApp /> */}
 
-    <Suspense fallback={(   // Puede ser un componente
+    {/* <Suspense fallback={(   // Puede ser un componente
         <div className='bg-gradient flex flex-col'>
           <h1 className='text-2xl'>Cargando</h1>
         </div>
       )} >
       <ClientInformation getUser={ getUserAction(1000) } />
-    </Suspense>
+    </Suspense> */}
+
+    <ProfessionalApp />
     
   </StrictMode>,
 )
@@ -55,3 +58,7 @@ createRoot(document.getElementById('root')!).render(
 
 // https://sonner.emilkowal.ski/  (Toast)
 // npm install sonner
+
+// useContext - RUTAS
+// https://reactrouter.com/start/data/installation
+// npm i react-router
