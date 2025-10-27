@@ -1,16 +1,29 @@
 
+import { UserContext } from '@/09-useContext/context/UserContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useState } from 'react';
-import { Link } from 'react-router';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router';
+import { toast } from 'sonner';
 
 export const LoginPage = () => {
 
+  const { login } = useContext(UserContext);
   const [userId, setUserId] = useState('');
+
+  const navigation = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log({ userId });
+    const result = login(+userId);  // Si es una cadena numérica (por ejemplo "123"), la convierte a número (123).
+    
+    if (!result) {
+      toast.error("Usuario no encontrado");
+      return;
+    }
+
+    navigation('/profile');
   }
 
   return (
