@@ -1,12 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { Button } from './components/ui/button'
+import { HeroesApp } from './HeroesApp'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <h1>Hola Mundo</h1>
-    <Button>Hola de nuevo</Button>
+    <HeroesApp />
   </StrictMode>,
 )
 
@@ -18,4 +17,7 @@ createRoot(document.getElementById('root')!).render(
 // npm install tailwindcss @tailwindcss/vite
 // npm install -D @types/node
 // npx shadcn@latest init
+
+// RUTAS: https://reactrouter.com/start/data/installation
+// npm i react-router
 
