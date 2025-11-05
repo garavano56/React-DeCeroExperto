@@ -2,8 +2,10 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { CustomJumbotron } from "@/components/custom/CustomJumbotron"
 import { HeroStats } from "@/heroes/components/HeroStats"
 import { HeroGrid } from "@/heroes/components/HeroGrid"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { CustomPagination } from "@/components/custom/CustomPagination"
+import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs"
+import { getHeroesByPage } from "@/heroes/actions/get-heroes-by-page.action"
 
 export const HomePage = () => {
       
@@ -11,6 +13,12 @@ export const HomePage = () => {
     'all' | 'favorites' | 'heroes' | 'villains'
   >('all');
 
+  useEffect(() => {
+    getHeroesByPage().then((heroes) => {
+      console.log({ heroes });
+    })
+  }, []);
+  
   return (
     <>
         {/* Header */}
@@ -18,6 +26,8 @@ export const HomePage = () => {
             title="Universo de SuperHéroes" 
             description="Descrubra, explora y administra super héroes y villanos." 
         />
+
+        <CustomBreadcrumbs currentPage="Super Héroes"/>
 
         {/* Stats Dashboard */}
         <HeroStats />

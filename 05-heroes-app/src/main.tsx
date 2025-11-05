@@ -21,3 +21,5 @@ createRoot(document.getElementById('root')!).render(
 // RUTAS: https://reactrouter.com/start/data/installation
 // npm i react-router
 
+// Axios
+// npm i axios
