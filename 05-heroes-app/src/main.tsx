@@ -23,3 +23,11 @@ createRoot(document.getElementById('root')!).render(
 
 // Axios
 // npm i axios
+
+// Query a http
+// https://tanstack.com/query/latest/docs/framework/react/installation
+// npm i @tanstack/react-query
+// https://tanstack.com/query/latest/docs/framework/react/quick-start
+// npm i -D @tanstack/eslint-plugin-query
+// https://tanstack.com/query/latest/docs/framework/react/devtools
+// npm i @tanstack/react-query-devtools

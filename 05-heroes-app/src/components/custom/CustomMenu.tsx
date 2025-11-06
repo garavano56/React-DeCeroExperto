@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 export const CustomMenu = () => {
 
     const { pathname } = useLocation();
-    console.log( {pathname} );
 
     const isActive = (path: string) => {
         return pathname === path;
