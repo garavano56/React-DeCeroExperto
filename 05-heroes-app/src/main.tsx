@@ -31,3 +31,10 @@ createRoot(document.getElementById('root')!).render(
 // npm i -D @tanstack/eslint-plugin-query
 // https://tanstack.com/query/latest/docs/framework/react/devtools
 // npm i @tanstack/react-query-devtools
+
+//* Crear Interface a partir de JSON
+// 1° - Copiar el Json por cual se quiere crear la Interface.
+// 2° - Crear el Archivo donde va a estar la Interface
+// 3° - Presionar: Ctrl + Shift + P
+// 4° - Escribir la extensión: "Paste JSON as Code" y hacerle Click (Si no existe agregarla)
+// 5° - Escribir el nombre de la Interface que se quiera crear. y "Enter"
