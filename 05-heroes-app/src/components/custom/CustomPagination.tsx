@@ -1,5 +1,6 @@
 import { ChevronLeft, MoreHorizontal, ChevronRight } from "lucide-react"
 import { Button } from "../ui/button"
+import { useSearchParams } from "react-router";
 
 interface Props {
     totalPages: number;
@@ -7,36 +8,41 @@ interface Props {
 
 export const CustomPagination = ( {totalPages}: Props ) => {
 
-  let page = 8;
+    const [searchParams, setSearchParams] = useSearchParams();
+    
+    const queryPage = searchParams.get('page') ?? 1;
+    const page = isNaN(+queryPage) ? 1 : +queryPage;    // El + transforma el string a un number
 
-  return (
-    <div className="flex items-center justify-center space-x-2">
-        <Button variant="outline" size="sm" disabled= { page === 1 }>
-        <ChevronLeft className="h-4 w-4" />
-        Anteriores
-        </Button>
+    console.log({queryPage});
 
-        {
-            Array.from( { length: totalPages } ).map( (_, index)=> (
-                <Button 
-                    key={ index }
-                    variant= {
-                    page === index + 1 ? 'default' : "outline"
-                } size="sm">
-                    { index + 1 }
-                </Button>
-            ))
-        }
+    return (
+        <div className="flex items-center justify-center space-x-2">
+            <Button variant="outline" size="sm" disabled= { page === 1 }>
+            <ChevronLeft className="h-4 w-4" />
+            Anteriores
+            </Button>
 
-        {/* <Button variant="ghost" size="sm" disabled>
-            <MoreHorizontal className="h-4 w-4" />
-        </Button> */}
+            {
+                Array.from( { length: totalPages } ).map( (_, index)=> (
+                    <Button 
+                        key={ index }
+                        variant= {
+                        page === index + 1 ? 'default' : "outline"
+                    } size="sm">
+                        { index + 1 }
+                    </Button>
+                ))
+            }
 
-        <Button 
-            variant="outline" size="sm" disabled= { page === totalPages }>
-            Siguientes
-        <ChevronRight className="h-4 w-4" />
-        </Button>
-    </div>
-  )
-}
+            {/* <Button variant="ghost" size="sm" disabled>
+                <MoreHorizontal className="h-4 w-4" />
+            </Button> */}
+
+            <Button 
+                variant="outline" size="sm" disabled= { page === totalPages }>
+                Siguientes
+            <ChevronRight className="h-4 w-4" />
+            </Button>
+        </div>
+    )
+    }
