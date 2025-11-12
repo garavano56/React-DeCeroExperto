@@ -37,7 +37,7 @@ export const HomePage = () => {
   // >('all');
 
   const { data: HeroesResponse} = useQuery({    // Renombro lo que retorna con el nombre "HeroesResponse"
-    queryKey: ['heroes'],
+    queryKey: ['heroes', { page, limit }],
     queryFn: () =>  getHeroesByPageAction(+page, +limit),  // + lo transforma de un string a un número
     staleTime: 1000 * 60 * 5,   // 5 minutos
   });
