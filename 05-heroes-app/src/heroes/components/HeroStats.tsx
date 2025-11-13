@@ -3,15 +3,18 @@ import { Heart, Users, Zap} from "lucide-react"
 import { HeroStatsCard } from "./HeroStatsCard"
 import { getSummaryAction } from "../actions/get-summary.action";
 import { useQuery } from "@tanstack/react-query";
+import { useHeroSummary } from "../hooks/useHeroSummary";
 
 
 export const HeroStats = () => {
 
-    const { data: summary} = useQuery({    // Renombro lo que retorna con el nombre "summary"
-        queryKey: ['summary-information'],
-        queryFn: getSummaryAction,     // () =>  getSummaryAction(), 
-        staleTime: 1000 * 60 * 5,   // 5 minutos
-    });
+    const { data: summary } = useHeroSummary()
+
+    // const { data: summary} = useQuery({    // Renombro lo que retorna con el nombre "summary"
+    //     queryKey: ['summary-information'],
+    //     queryFn: getSummaryAction,     // () =>  getSummaryAction(), 
+    //     staleTime: 1000 * 60 * 5,   // 5 minutos
+    // });
 
     return (
     <>
