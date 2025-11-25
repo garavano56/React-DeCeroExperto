@@ -14,7 +14,7 @@ interface FavoriteHeroContext {
 export const FavoriteHeroContext = createContext( {} as FavoriteHeroContext );
 
 const getFavoritesFromLocalStorage = (): Hero[] => {
-    const favorites = localStorage.getItem('favorite');
+    const favorites = localStorage.getItem('favorites');
     return favorites ? JSON.parse(favorites) : [];
 }
 
@@ -23,7 +23,7 @@ export const FavoriteHeroProvider = ({children}: PropsWithChildren) => {
     const [favorites, setFavorites] = useState<Hero[]>(getFavoritesFromLocalStorage());   // Inicializo con getFavoritesFromLocalStorage el estado inicial.
 
     const toggleFavorite = (hero: Hero) => {
-        const heroExist = favorites.find( h => h.id = hero.id);
+        const heroExist = favorites.find( h => h.id === hero.id);
         if (heroExist) {
             const newFavorites = favorites.filter( (h) => h.id !== hero.id )    // ELimina el heroe
             setFavorites( newFavorites );

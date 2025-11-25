@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router"
-import { useQuery } from "@tanstack/react-query"
+// import { useQuery } from "@tanstack/react-query"
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { CustomJumbotron } from "@/components/custom/CustomJumbotron"
@@ -7,10 +7,12 @@ import { HeroStats } from "@/heroes/components/HeroStats"
 import { HeroGrid } from "@/heroes/components/HeroGrid"
 import { CustomPagination } from "@/components/custom/CustomPagination"
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs"
-import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action"
-import { getSummaryAction } from "@/heroes/actions/get-summary.action"
+// import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action"
+// import { getSummaryAction } from "@/heroes/actions/get-summary.action"
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary"
 import { usePaginatedHero } from "@/heroes/hooks/usePaginatedHero"
+import { use } from "react"
+import { FavoriteHeroContext } from "@/heroes/context/FavoriteHeroContext"
 
 // Afuera para que no se cree el arreglo cada vez que se reenderiza el componente
 const validTabs = ['all', 'favorites', 'heroes', 'villains'];
@@ -18,6 +20,7 @@ const validTabs = ['all', 'favorites', 'heroes', 'villains'];
 export const HomePage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const { favorites, favoriteCount } = use(FavoriteHeroContext)
 
   const activeTab = searchParams.get('tab') ?? 'all';
 
@@ -96,7 +99,7 @@ export const HomePage = () => {
                     return prev;
                   }) 
                 }
-            >Favorites (3)</TabsTrigger>
+            >Favorites ({ favoriteCount })</TabsTrigger>
 
             <TabsTrigger 
                 value="heroes" 
@@ -128,7 +131,7 @@ export const HomePage = () => {
           </TabsContent>
           <TabsContent value='favorites'>
             <h1>Favoritos!!!</h1>   {/* Mostrar todos los personajes favoritos */}
-            <HeroGrid heroes={ [] }  /> 
+            <HeroGrid heroes={ favorites }  /> 
           </TabsContent>
           <TabsContent value='heroes'>
             <h1>Héroes</h1>         {/* Mostrar todos los heroes*/}
@@ -141,7 +144,12 @@ export const HomePage = () => {
         </Tabs>
 
         {/* Pagination */}
-        <CustomPagination totalPages={ HeroesResponse?.pages ?? 1 }  />
+        {
+            selectedTab !== 'favorites' && (
+              <CustomPagination totalPages={ HeroesResponse?.pages ?? 1 }  />
+            )
+        }
+        
     </>
   )
 }
