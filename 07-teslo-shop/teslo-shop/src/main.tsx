@@ -9,3 +9,9 @@ createRoot(document.getElementById('root')!).render(
     <TesloShopApp />
   </StrictMode>,
 )
+
+// npm create vite@latest
+
+// https://reactrouter.com/start/declarative/installation
+// npm i react-router 
+
