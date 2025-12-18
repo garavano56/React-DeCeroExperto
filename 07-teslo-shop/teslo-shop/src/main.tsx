@@ -28,5 +28,6 @@ createRoot(document.getElementById('root')!).render(
 
 
 // Se usó la IA --> https://lovable.dev/
+// Se usó la IA --> https://bolt.new/   (Panel administrativo)
 
 
