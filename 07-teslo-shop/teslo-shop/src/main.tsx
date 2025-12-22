@@ -26,6 +26,12 @@ createRoot(document.getElementById('root')!).render(
 // Google Font
 // https://fonts.google.com/selection/embed
 
+// Uso de Caché
+// https://tanstack.com/query/latest/docs/framework/react/installation
+// npm i @tanstack/react-query axios     // Agregué axios también
+// https://tanstack.com/query/latest/docs/framework/react/devtools
+// npm i @tanstack/react-query-devtools
+
 
 // Se usó la IA --> https://lovable.dev/
 // Se usó la IA --> https://bolt.new/   (Panel administrativo)
